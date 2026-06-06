@@ -2,11 +2,9 @@ import React, { useState, useRef } from 'react';
 import {
   Card, CardContent, Box, TextField, Button, Avatar,
   Divider, IconButton, Typography, CircularProgress,
-  Tooltip, Chip,
+  Chip,
 } from '@mui/material';
-import {
-  PhotoCamera, Send, Close,
-} from '@mui/icons-material';
+import { PhotoCamera, Send, Close } from '@mui/icons-material';
 import { createPost } from '../api';
 import { useAuth } from '../context/AuthContext';
 
@@ -36,7 +34,7 @@ export default function CreatePost({ onPostCreated }) {
 
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result); // base64
+      setImage(reader.result);
       setError('');
     };
     reader.readAsDataURL(file);
@@ -44,7 +42,6 @@ export default function CreatePost({ onPostCreated }) {
 
   const removeImage = () => {
     setImage('');
-    setImageName('');
     if (fileRef.current) fileRef.current.value = '';
   };
 
@@ -107,7 +104,6 @@ export default function CreatePost({ onPostCreated }) {
               inputProps={{ maxLength: 1000 }}
             />
 
-            {/* Image preview */}
             {image && (
               <Box mt={1.5} position="relative" display="inline-block">
                 <img
@@ -147,7 +143,6 @@ export default function CreatePost({ onPostCreated }) {
 
         <Divider sx={{ my: 1.5 }} />
 
-        {/* Action row */}
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Box display="flex" gap={0.5}>
             <input
@@ -157,15 +152,9 @@ export default function CreatePost({ onPostCreated }) {
               onChange={handleImageUpload}
               style={{ display: 'none' }}
             />
-            <Tooltip title="Add photo">
-              <IconButton
-                color="primary"
-                onClick={() => fileRef.current?.click()}
-                size="small"
-              >
-                <PhotoCamera />
-              </IconButton>
-            </Tooltip>
+            <IconButton color="primary" onClick={() => fileRef.current?.click()} size="small">
+              <PhotoCamera />
+            </IconButton>
 
             {text.length > 0 && (
               <Chip
