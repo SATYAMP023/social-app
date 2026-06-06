@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {
   Card, CardContent, CardActions, Box, Typography, Avatar,
-  IconButton, TextField, Button, Collapse, Divider, Chip,
+  IconButton, TextField, Button, Collapse, Divider,
   Tooltip, CircularProgress,
 } from '@mui/material';
 import {
   Favorite, FavoriteBorder, ChatBubbleOutline, Delete,
-  Send, ExpandMore, ExpandLess, AccessTime,
+  Send, AccessTime,
 } from '@mui/icons-material';
 import { likePost, addComment } from '../api';
 import { useAuth } from '../context/AuthContext';

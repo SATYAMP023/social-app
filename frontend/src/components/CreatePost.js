@@ -5,7 +5,7 @@ import {
   Tooltip, Chip,
 } from '@mui/material';
 import {
-  PhotoCamera, EmojiEmotions, Send, Close,
+  PhotoCamera, Send, Close,
 } from '@mui/icons-material';
 import { createPost } from '../api';
 import { useAuth } from '../context/AuthContext';
@@ -21,7 +21,6 @@ export default function CreatePost({ onPostCreated }) {
   const { user } = useAuth();
   const [text, setText] = useState('');
   const [image, setImage] = useState('');
-  const [imageName, setImageName] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const fileRef = useRef(null);
@@ -38,7 +37,6 @@ export default function CreatePost({ onPostCreated }) {
     const reader = new FileReader();
     reader.onloadend = () => {
       setImage(reader.result); // base64
-      setImageName(file.name);
       setError('');
     };
     reader.readAsDataURL(file);
